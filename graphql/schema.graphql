@@ -1,0 +1,86 @@
+scalar Date
+
+"""
+取引レコード
+"""
+type Transaction {
+  """
+  取引ID
+  """
+  id: ID!
+  """
+  取引に関するメモ
+  """
+  memo: String!
+  """
+  入金額
+  """
+  in: Int
+  """
+  出金額
+  """
+  out: Int
+  """
+  取引日付
+  """
+  transactionDate: Date!
+}
+
+"""
+取引のInput
+"""
+input TransactionInput {
+  """
+  取引に関するメモ
+  """
+  memo: String!
+  """
+  入金額
+  """
+  in: Int
+  """
+  出金額
+  """
+  out: Int
+}
+
+type Query {
+  """
+  取引データの取得
+  """
+  getTransaction(
+    """
+    取引ID
+    """
+    id: ID!
+  ): Transaction
+  """
+  取引一覧の取得
+  """
+  getTransactions: [Transaction!]
+}
+
+type Mutation {
+  """
+  取引の追加
+  """
+  addTransaction(
+    """
+    取引内容
+    """
+    input: TransactionInput!
+  ): Transaction!
+  """
+  取引の更新
+  """
+  updateTransaction(
+    """
+    取引ID
+    """
+    id: ID!, 
+    """
+    取引内容
+    """
+    input: TransactionInput!
+  ): Transaction
+}
