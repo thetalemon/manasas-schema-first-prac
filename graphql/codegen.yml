@@ -1,0 +1,13 @@
+overwrite: true
+schema:
+  - ./schema.graphql
+generates:
+  ../back/types/graphql-resolver-types.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+  ../front/types/graphql-client-api.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
